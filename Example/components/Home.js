@@ -1,14 +1,14 @@
 import React from 'react';
 import {View, Text, StyleSheet} from "react-native";
 import Button from "react-native-button";
-import {Actions} from "react-native-router-flux";
+import {Actions,ActionConst} from "react-native-router-flux";
 
 var styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#F5FCFF",
+        backgroundColor: "#d82455",
     },
     welcome: {
         fontSize: 20,
@@ -26,8 +26,13 @@ class Home extends React.Component {
     render(){
         return (
             <View style={styles.container}>
-                <Text>Replace screen</Text>
-                <Button onPress={Actions.pop}>Back</Button>
+                <Text>Home Screen</Text>
+                <Button onPress={()=>Actions.launch()}>Go to Launch page</Button>
+                <Button onPress={()=>{
+                    console.log('hello')
+                    this.props.navigation.navigate('login',{type:ActionConst.REPLACE})
+                }}>Logout</Button>
+
             </View>
         );
     }
